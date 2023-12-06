@@ -1,40 +1,31 @@
+// index.js
+
 const express = require('express');
 const connectToMongoDB = require('./database/connect');
+const path = require("path");
+const cors = require('cors');
+const bodyParser = require('body-parser');
 
 const app = express();
+app.use(bodyParser.json())
+app.use(cors());
 const PORT = 8000;
-const { MongoClient, ServerApiVersion  } = require('mongodb');
+const traverseInterface = require('./utils/handlers');
+
+
 
 require("dotenv").config();
 
-// const uri = process.env.DATABASE_URL;
-// // Create a MongoClient with a MongoClientOptions object to set the Stable API version
-// const client = new MongoClient(uri, {
-//   serverApi: {
-//     version: ServerApiVersion.v1,
-//     strict: true,
-//     deprecationErrors: true,
-//   }
-// });
-// async function run() {
-//   try {
-//     // Connect the client to the server	(optional starting in v4.7)
-//     await client.connect();
-//     // Send a ping to confirm a successful connection
-//     await client.db("admin").command({ ping: 1 });
-//     console.log("Pinged your deployment. You successfully connected to MongoDB!");
-//   } finally {
-//     // Ensures that the client will close when you finish/error
-//     await client.close();
-//   }
-// }
-// run().catch(console.dir);
+const interfacesPath = path.join(__dirname, "interfaces");
 
 connectToMongoDB().then(()=> {"connect to database"}).catch(()=> {console.error("Error when connecting")});
+
 
 app.listen(PORT, () => {
     console.log(`App now listening to port ${PORT}`);
 })
+
+traverseInterface(interfacesPath, app);
 
 
 
