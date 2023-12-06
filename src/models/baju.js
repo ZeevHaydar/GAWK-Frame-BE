@@ -5,7 +5,7 @@ const bajuSchema = new mongoose.Schema({
     harga: { type: Number, required: true },
     kategori: { type: String, required: true },
     stok: { type: Number, required: true }
-  });
+  }, { versionKey: false });
 
 const Baju = mongoose.model('Baju', bajuSchema, 'Baju');
 module.exports = Baju;

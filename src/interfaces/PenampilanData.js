@@ -13,5 +13,5 @@ const endpoint1 = async (req, res) => {
 }
 
 module.exports = [
-    {method: 'get', URI: '/api/pakaian', execute: endpoint1}
+    {method: 'get', URI: '/api/pakaian', execute: endpoint1},
 ];

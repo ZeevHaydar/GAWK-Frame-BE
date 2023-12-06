@@ -4,7 +4,8 @@
   "description": "Back End untuk purwarupa project tubes layanan STI",
   "main": "src/index.js",
   "scripts": {
-    "test": "test"
+    "test": "test",
+    "seed": "node src/seed/seed.js"
   },
   "author": "",
   "license": "ISC",
