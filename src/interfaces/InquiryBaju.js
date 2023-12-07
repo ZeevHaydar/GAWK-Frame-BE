@@ -3,7 +3,7 @@
 const Chat = require('../models/chat');
 
 const endpoint1 = async (req, res) => {
-    const  { userId } = req.query;
+    const  { userId } = req.params;
     if (!userId) return res.status(404).json({ success: false, message: "Data Not Found!" });
     try{
         const chatData = await Chat.findOne({pelanggan: userId});
@@ -21,7 +21,7 @@ const endpoint1 = async (req, res) => {
 }
 
 const endpoint2 = async (req, res) => {
-    const { userId } = req.query;
+    const { userId } = req.params;
     const { sender, message } = req.body;
     if (!userId) return res.status(404).json({ success: false, message: "Data Not Found!" });
     try{
@@ -42,7 +42,7 @@ const endpoint2 = async (req, res) => {
 }
 
 const endpoint3 = async (req, res) => {
-    const { userId } = req.query;
+    const { userId } = req.params;
     const { messageId } = req.body;
     if (!userId) return res.status(404).json({ success: false, message: "Data Not Found!" });
     try{
@@ -57,7 +57,7 @@ const endpoint3 = async (req, res) => {
 }
 
 module.exports = [
-    {method: 'get', URI: '/api/chat', execute: endpoint1},      // get chat & make new if not exists
-    {method: 'post', URI: '/api/chat', execute: endpoint2},     // post pesan to chat
-    {method: 'delete', URI: '/api/chat', execute: endpoint3},   // delete pesan from chat    
+    {method: 'get', URI: '/api/chat/:userId', execute: endpoint1},      // get chat & make new if not exists
+    {method: 'post', URI: '/api/chat/:userId', execute: endpoint2},     // post pesan to chat
+    {method: 'delete', URI: '/api/chat/:userId', execute: endpoint3},   // delete pesan from chat    
 ]
