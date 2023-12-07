@@ -21,7 +21,7 @@ const interfacesPath = path.join(__dirname, "interfaces");
 connectToMongoDB().then(()=> {"connect to database"}).catch(()=> {console.error("Error when connecting")});
 
 
-app.listen(PORT, () => {
+app.listen(PORT,"0.0.0.0", () => {
     console.log(`App now listening to port ${PORT}`);
 })
 
