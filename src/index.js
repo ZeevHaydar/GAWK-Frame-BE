@@ -9,13 +9,13 @@ const bodyParser = require('body-parser');
 const app = express();
 app.use(bodyParser.json())
 app.use(cors());
-const PORT = 8000;
+
 const traverseInterface = require('./utils/handlers');
 
 
 
 require("dotenv").config();
-
+const PORT = process.env.PORT || 3000;;
 const interfacesPath = path.join(__dirname, "interfaces");
 
 connectToMongoDB().then(()=> {"connect to database"}).catch(()=> {console.error("Error when connecting")});
