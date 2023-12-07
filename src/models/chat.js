@@ -6,7 +6,7 @@ const pesanSchema = new mongoose.Schema({
 });
 
 const chatSchema = new mongoose.Schema({
-    pelanggan: { type: mongoose.Schema.Types.ObjectId, ref: 'Pelanggan' },
+    pelanggan: { type: mongoose.Schema.Types.ObjectId, ref: 'Pelanggan', required:true },
     pesan: [pesanSchema]
 }, { versionKey: false });
 
