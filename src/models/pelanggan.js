@@ -7,9 +7,15 @@ const riwayatPembelianSchema = new mongoose.Schema({
   status: {type: String, enum: ["Belum Diantar", "Diantar"], default:"Belum Diantar"}
 });
 
+const keranjangSchema =  new mongoose.Schema({
+  baju: { type: mongoose.Schema.Types.ObjectId, ref: 'Baju' },
+  jumlah: Number
+});
+
 const pelangganSchema = new mongoose.Schema({
     nama: { type: String, required: true },
-    riwayat_pembelian: [riwayatPembelianSchema]
+    riwayat_pembelian: [riwayatPembelianSchema],
+    keranjang: [keranjangSchema]
   }, { versionKey: false });
 
 const Pelanggan = mongoose.model('Pelanggan', pelangganSchema, 'Pelanggan');

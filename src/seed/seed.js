@@ -14,7 +14,6 @@ const seedBaju = async () => {
         const bajuData = [
             { nama: 'Kemeja Nanami Kento (hangus terbakar)', harga: 500000, kategori: 'Formal', stok: 20 },
             { nama: 'Baju Pramuka', harga: 30000, kategori: 'Formal', stok: 15 },
-            // Add more sample Baju data as needed
         ];
 
         // await Baju.insertMany(bajuData);
@@ -38,9 +37,8 @@ const seedBaju = async () => {
 const seedPelanggan = async () => {
     try {
         const pelangganData = [
-            { nama: 'Pelanggan 1', riwayat_pembelian: [] },
-            { nama: 'Pelanggan 2', riwayat_pembelian: [] },
-            // Add more sample Pelanggan data as needed
+            { nama: 'Pelanggan 1', riwayat_pembelian: [], keranjang: [] },
+            { nama: 'Pelanggan 2', riwayat_pembelian: [], keranjang: [] },
         ];
 
         const savePromises = pelangganData.map(async (p, index)=> {
