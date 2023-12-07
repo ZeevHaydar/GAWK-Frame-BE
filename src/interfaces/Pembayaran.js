@@ -28,6 +28,21 @@ const endpoint1 = async (req, res) => {
 
         const hargaDanJumlah = await Promise.all(hargaDanJumlahPromise);
 
+        // Check if there is enough stock for each item
+        for (const { id, jumlah } of pembelian_data) {
+            const baju = await Baju.findById(id);
+            if (baju.stok < jumlah) {
+                return res.status(400).json({ success: false, message: `Not enough stock for item ${baju.nama}` });
+            }
+        }
+
+        // Reduce stock for each item
+        for (const { id, jumlah } of pembelian_data) {
+            const baju = await Baju.findById(id);
+            baju.stok -= jumlah;
+            await baju.save();
+        }
+
         // add pembayaran to database
         const nominal = hargaDanJumlah.reduce((acc, { harga, jumlah }) => acc + harga * jumlah, 0);
 

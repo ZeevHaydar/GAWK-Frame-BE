@@ -3,7 +3,8 @@ const mongoose = require('mongoose');
 
 const riwayatPembelianSchema = new mongoose.Schema({
   waktu: Date,
-  transaksi: { type: mongoose.Schema.Types.ObjectId, ref: 'Transaksi' }
+  transaksi: { type: mongoose.Schema.Types.ObjectId, ref: 'Transaksi' },
+  status: {type: String, enum: ["Belum Diantar", "Diantar"], default:"Belum Diantar"}
 });
 
 const pelangganSchema = new mongoose.Schema({
