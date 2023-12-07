@@ -1,6 +1,7 @@
 const mongoose = require('mongoose');
 
 const pesanSchema = new mongoose.Schema({
+    pengirim: String,                       // 'pelanggan' or 'karyawan'
     waktu: Date,
     isi: String
 });
