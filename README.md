@@ -3,16 +3,16 @@ Please Geb me KOK
 
 # Penjelasan Service
 Bagian Back-End dari layanan GAWK-Frame memberikan API berikut:
-<br/>
+<br>
 Pembayaran:
 - method: post, url: '/api/transaksi', query: userID
 - method: get, url: '/api/transaksi', body: pembelian_baju
-<br/>
+<br>
 InquiryBaju:
 - method: get, url: '/api/chat/:userId',
 - method: post, url: '/api/chat/:userId', body: sender, message
 - method: delete, url: '/api/chat/:userId', body: messageId
-<br/>
+<br>
 PenampilanData:
 - method: get, url: 'api/pakaian'
 - method: get, url: 'api/pakaian/:id'
