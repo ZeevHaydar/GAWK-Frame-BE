@@ -161,7 +161,7 @@ const endpoint9 = async (req,res) => {
         // Check if a Pelanggan with the provided nama already exists
         const existingPelanggan = await Pelanggan.findOne({ nama });
         if (existingPelanggan) {
-            return res.status(400).json({ success: false, message: 'Pelanggan with this email already exists' });
+            return res.status(400).json({ success: false, message: 'Pelanggan with this name already exists' });
         }
 
         // Create a new Pelanggan
